@@ -16,6 +16,7 @@ interface PomodoroStore {
   setCurrentTask: (taskId: string | null) => void;
   updateConfig: (config: Partial<TimerConfig>) => void;
   resetConfig: () => void;
+  resetTimer: () => void;
   
   // Task Actions
   addTask: (task: Omit<Task, 'id'>) => void;
@@ -41,7 +42,7 @@ const getInitialTime = (mode: TimerMode, config: TimerConfig): number => {
   }
 };
 
-export const usePomodoroStore = create<PomodoroStore>((set, get) => ({
+export const usePomodoroStore = create<PomodoroStore>((set) => ({
   timer: {
     timeLeft: DEFAULT_CONFIG.pomodoro * 60,
     isRunning: false,
@@ -129,6 +130,18 @@ export const usePomodoroStore = create<PomodoroStore>((set, get) => ({
       const newTime = getInitialTime(state.timer.mode, DEFAULT_CONFIG);
       return {
         config: DEFAULT_CONFIG,
+        timer: {
+          ...state.timer,
+          timeLeft: newTime,
+          isRunning: false,
+        },
+      };
+    }),
+
+  resetTimer: () =>
+    set((state) => {
+      const newTime = getInitialTime(state.timer.mode, state.config);
+      return {
         timer: {
           ...state.timer,
           timeLeft: newTime,

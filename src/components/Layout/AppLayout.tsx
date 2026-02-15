@@ -1,14 +1,14 @@
+import { DailyProgress } from '@/components/Tasks/DailyProgress';
+import { TaskList } from '@/components/Tasks/TaskList';
+import { CircularTimer } from '@/components/Timer/CircularTimer';
+import { TimerControls } from '@/components/Timer/TimerControls';
+import { ModeSelector } from '@/components/Timer/ModeSelector';
+import { CustomTimerConfig } from '@/components/Timer/CustomTimerConfig';
 import { Header } from './Header';
-import { DailyProgress } from '../Tasks/DailyProgress';
-import { TaskList } from '../Tasks/TaskList';
-import { CircularTimer } from '../Timer/CircularTimer';
-import { ModeSelector } from '../Timer/ModeSelector';
-import { TimerControls } from '../Timer/TimerControls';
-import { CustomTimerConfig } from '../Timer/CustomTimerConfig';
 
 export const AppLayout = () => {
   return (
-    <div className="min-h-screen bg-background-light">
+    <div className="min-h-screen bg-surface-page">
       <Header />
       
       <main className="max-w-[1600px] mx-auto p-4 md:p-6 lg:p-8">

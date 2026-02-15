@@ -1,9 +1,16 @@
 import { useState } from 'react';
-import { usePomodoroStore } from '../../store/usePomodoroStore';
+import { usePomodoroStore } from '@/store/usePomodoroStore';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+
+const DEFAULT_CONFIG = {
+  pomodoro: 25,
+  shortBreak: 5,
+  longBreak: 15,
+};
 
 export const CustomTimerConfig = () => {
-  const { config, updateConfig, resetConfig } = usePomodoroStore();
-  
+  const { config, updateConfig } = usePomodoroStore();
   const [localConfig, setLocalConfig] = useState(config);
 
   const handleUpdate = () => {
@@ -11,22 +18,22 @@ export const CustomTimerConfig = () => {
   };
 
   const handleReset = () => {
-    resetConfig();
-    setLocalConfig({ pomodoro: 25, shortBreak: 5, longBreak: 15 });
+    setLocalConfig(DEFAULT_CONFIG);
+    updateConfig(DEFAULT_CONFIG);
   };
 
   return (
     <div className="card">
-      <h3 className="text-lg font-semibold text-neutral-800 mb-4">
+      <h3 className="text-lg font-semibold text-text-primary mb-4">
         Timer Personalizado (Minutos)
       </h3>
       
       <div className="grid grid-cols-3 gap-4 mb-6">
         <div>
-          <label className="block text-sm font-medium text-neutral-600 mb-2">
+          <label className="block text-sm font-medium text-text-secondary mb-2">
             Pomodoro
           </label>
-          <input
+          <Input
             type="number"
             min="1"
             max="60"
@@ -34,15 +41,15 @@ export const CustomTimerConfig = () => {
             onChange={(e) =>
               setLocalConfig({ ...localConfig, pomodoro: Number(e.target.value) })
             }
-            className="input-field text-center"
+            className="text-center"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-neutral-600 mb-2">
+          <label className="block text-sm font-medium text-text-secondary mb-2">
             Pausa Curta
           </label>
-          <input
+          <Input
             type="number"
             min="1"
             max="30"
@@ -50,15 +57,15 @@ export const CustomTimerConfig = () => {
             onChange={(e) =>
               setLocalConfig({ ...localConfig, shortBreak: Number(e.target.value) })
             }
-            className="input-field text-center"
+            className="text-center"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-neutral-600 mb-2">
+          <label className="block text-sm font-medium text-text-secondary mb-2">
             Pausa Longa
           </label>
-          <input
+          <Input
             type="number"
             min="1"
             max="60"
@@ -66,18 +73,18 @@ export const CustomTimerConfig = () => {
             onChange={(e) =>
               setLocalConfig({ ...localConfig, longBreak: Number(e.target.value) })
             }
-            className="input-field text-center"
+            className="text-center"
           />
         </div>
       </div>
 
       <div className="flex gap-3">
-        <button onClick={handleReset} className="btn-secondary flex-1">
+        <Button onClick={handleReset} variant="secondary" className="flex-1">
           Resetar
-        </button>
-        <button onClick={handleUpdate} className="btn-primary flex-1">
+        </Button>
+        <Button onClick={handleUpdate} variant="primary" className="flex-1">
           Atualizar
-        </button>
+        </Button>
       </div>
     </div>
   );

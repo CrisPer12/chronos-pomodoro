@@ -1,39 +1,41 @@
-import { usePomodoroStore } from '../../store/usePomodoroStore';
-import { calculateProgress, formatDate } from '../../utils/timeFormatter';
+import { usePomodoroStore } from '@/store/usePomodoroStore';
+import { formatDate } from '@/utils/timeFormatter';
 
 export const DailyProgress = () => {
   const { tasks } = usePomodoroStore();
-  
-  const completedTasks = tasks.filter(t => t.completed).length;
-  const totalTasks = tasks.length;
-  const percentage = calculateProgress(completedTasks, totalTasks);
   const now = new Date();
+
+  const completedTasks = tasks.filter((task) => task.completed).length;
+  const totalTasks = tasks.length;
+  const progressPercentage = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
   return (
     <div className="card">
-      <h3 className="text-lg font-semibold text-neutral-800 mb-4">
+      <h3 className="text-lg font-semibold text-text-primary mb-4">
         Progresso Diário
       </h3>
       
       <div className="flex items-center gap-3 mb-3">
-        <div className="bg-primary-100 text-primary-600 px-3 py-1.5 rounded-lg font-semibold text-sm">
+        <div className="bg-action-primary/10 text-action-primary px-3 py-1.5 rounded-lg font-semibold text-sm">
           {completedTasks}/{totalTasks}
         </div>
-        <span className="text-sm text-neutral-600">Tarefas concluídas</span>
-        <span className="ml-auto text-sm text-neutral-500">
+        <span className="text-sm text-text-secondary">Tarefas concluídas</span>
+        <span className="ml-auto text-sm text-text-muted">
           {formatDate(now)}
         </span>
       </div>
 
       <div className="progress-bar">
-        <div 
-          className="progress-fill"
-          style={{ width: `${percentage}%` }}
+        <div
+          className="progress-bar-fill"
+          style={{ width: `${progressPercentage}%` }}
         />
       </div>
 
-      <div className="text-right mt-2">
-        <span className="text-2xl font-bold text-neutral-800">{percentage}%</span>
+      <div className="mt-2 text-right">
+        <span className="text-xs text-text-muted">
+          {Math.round(progressPercentage)}%
+        </span>
       </div>
     </div>
   );

@@ -1,88 +1,93 @@
-import { Check, Circle, MoreVertical } from 'lucide-react';
-import { usePomodoroStore } from '../../store/usePomodoroStore';
-import type { Task } from '../../types';
-import clsx from 'clsx';
-import { Dropdown } from 'rsuite';
+import { MoreVertical } from 'lucide-react';
+import { Task } from '@/types';
+import { usePomodoroStore } from '@/store/usePomodoroStore';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { cn } from '@/lib/utils';
 
 interface TaskItemProps {
   task: Task;
 }
 
 export const TaskItem = ({ task }: TaskItemProps) => {
-  const { toggleTaskComplete, deleteTask, setCurrentTask } = usePomodoroStore();
+  const { toggleTaskComplete, deleteTask } = usePomodoroStore();
 
   const handleToggle = () => {
     toggleTaskComplete(task.id);
   };
 
-  const handleSelect = () => {
-    setCurrentTask(task.id);
-  };
-
   return (
-    <div
-      className={clsx(
-        'group flex items-center gap-3 p-3 rounded-xl transition-all duration-200',
-        'hover:bg-neutral-50 cursor-pointer',
-        task.completed && 'opacity-60'
-      )}
-      onClick={handleSelect}
-    >
+    <div className="task-item group">
       <button
-        onClick={(e) => {
-          e.stopPropagation();
-          handleToggle();
-        }}
-        className="flex-shrink-0"
+        onClick={handleToggle}
+        className={cn(
+          "w-5 h-5 rounded-full border-2 flex-shrink-0 transition-all",
+          task.completed
+            ? "bg-status-success border-status-success"
+            : "border-border-input hover:border-status-success"
+        )}
       >
-        {task.completed ? (
-          <div className="w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center">
-            <Check size={16} className="text-white" />
-          </div>
-        ) : (
-          <Circle size={24} className="text-neutral-300 hover:text-primary-500" />
+        {task.completed && (
+          <svg
+            className="w-full h-full text-text-on-primary"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={3}
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
         )}
       </button>
 
       <div className="flex-1 min-w-0">
         <p
-          className={clsx(
-            'font-medium text-neutral-800 truncate',
-            task.completed && 'line-through text-neutral-500'
+          className={cn(
+            "text-base font-medium truncate",
+            task.completed
+              ? "text-text-muted line-through"
+              : "text-text-primary"
           )}
         >
           {task.title}
         </p>
-        <p className="text-sm text-neutral-500">
+        <p className="text-sm text-text-muted">
           Pomodoros {task.pomos}
         </p>
       </div>
 
-      <Dropdown
-        placement="bottomEnd"
-        renderToggle={(props, ref) => (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
           <button
-            {...props}
-            ref={ref}
-            className="btn-icon opacity-0 group-hover:opacity-100 transition-opacity"
+            className="p-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity hover:bg-surface-input"
             onClick={(e) => e.stopPropagation()}
           >
-            <MoreVertical size={20} className="text-neutral-600" />
+            <MoreVertical size={20} className="text-text-secondary" />
           </button>
-        )}
-      >
-        <Dropdown.Item onClick={() => console.log('Edit', task.id)}>
-          Editar
-        </Dropdown.Item>
-        <Dropdown.Item
-          onClick={(e) => {
-            e.stopPropagation();
-            deleteTask(task.id);
-          }}
-        >
-          Excluir
-        </Dropdown.Item>
-      </Dropdown>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem onClick={() => console.log('Edit', task.id)}>
+            Editar
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={(e) => {
+              e.stopPropagation();
+              deleteTask(task.id);
+            }}
+            className="text-status-error focus:text-status-error"
+          >
+            Excluir
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 };

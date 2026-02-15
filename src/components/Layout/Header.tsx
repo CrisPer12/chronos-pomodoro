@@ -1,33 +1,35 @@
 import { Search, Bell } from 'lucide-react';
-import { Avatar } from 'rsuite';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 export const Header = () => {
   return (
-    <header className="bg-background-card border-b border-neutral-200 px-6 py-4">
+    <header className="bg-surface-card border-b border-border-subtle px-6 py-4">
       <div className="max-w-[1600px] mx-auto flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-neutral-800">Pomodoro</h1>
+        <h1 className="text-2xl font-bold text-text-primary">
+          Pomodoro
+        </h1>
 
-        <div className="flex items-center gap-4">
-          <div className="relative hidden md:block">
-            <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
-            <input
-              type="text"
-              placeholder="Buscar"
-              className="pl-10 pr-4 py-2 rounded-lg border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none transition-all duration-200 w-64"
-            />
-          </div>
-
-          <button className="btn-icon relative">
-            <Bell size={20} className="text-neutral-600" />
-            <span className="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
-          </button>
-
-          <Avatar
-            circle
-            src="https://i.pravatar.cc/150?img=12"
-            alt="User avatar"
-            className="cursor-pointer hover:ring-2 hover:ring-primary-500 transition-all duration-200"
+        <div className="relative hidden md:block">
+          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" />
+          <Input
+            type="text"
+            placeholder="Buscar"
+            className="pl-10 pr-4 py-2 w-64"
           />
+        </div>
+
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          
+          <Button variant="icon" size="icon">
+            <Bell size={20} className="text-text-secondary" />
+          </Button>
+          
+          <div className="w-10 h-10 rounded-full bg-action-primary flex items-center justify-center text-text-on-primary font-semibold">
+            U
+          </div>
         </div>
       </div>
     </header>
