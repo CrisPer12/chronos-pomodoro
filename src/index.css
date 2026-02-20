@@ -26,11 +26,21 @@
 
   /* Card Component */
   .card {
-    @apply bg-surface-card rounded-lg p-6 shadow-md border border-border-subtle;
+    @apply bg-surface-card rounded-2xl p-6 shadow-md border border-border-subtle transition-all duration-300;
   }
 
   .card-elevated {
-    @apply shadow-lg;
+    @apply shadow-xl hover:shadow-2xl hover:-translate-y-1;
+  }
+
+  /* Glassmorphism */
+  .glass-panel {
+    background-color: rgba(255, 255, 255, 0.7);
+    @apply backdrop-blur-xl border border-white/20 shadow-lg dark:border-white/10;
+  }
+  
+  .dark .glass-panel {
+    background-color: rgba(26, 26, 28, 0.4);
   }
 
   /* Task Item Component */
@@ -71,32 +81,36 @@
 
   /* Animation utilities */
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
-  @keyframes slideIn {
+  @keyframes slideUp {
     from {
-      transform: translateY(-10px);
+      transform: translateY(20px);
       opacity: 0;
     }
-
     to {
       transform: translateY(0);
       opacity: 1;
     }
   }
-
-  .animate-in {
-    animation: fadeIn var(--transition-base);
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
   }
 
-  .animate-slide-in {
-    animation: slideIn var(--transition-base);
+  .animate-in {
+    animation: fadeIn var(--transition-base) forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 }

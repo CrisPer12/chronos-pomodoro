@@ -19,10 +19,12 @@ export const LandingPage = () => {
       <nav className="landing-nav">
         <div className="landing-container flex items-center justify-between py-4">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-lg bg-action-primary flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-action-primary flex items-center justify-center shadow-md">
               <Clock size={20} className="text-text-on-primary" />
             </div>
-            <span className="text-xl font-bold text-text-primary">Chronos</span>
+            <span className="text-xl font-bold font-display tracking-tight text-text-primary">
+              Chronos
+            </span>
           </Link>
 
           <div className="flex items-center gap-3">
@@ -43,37 +45,56 @@ export const LandingPage = () => {
       <section className="hero-section">
         <div className="landing-container">
           <div className="hero-content">
-            <div className="hero-badge">
+            <div
+              className="hero-badge animate-slide-up"
+              style={{ animationDelay: "0.1s" }}
+            >
               <Zap size={14} />
               <span>Produtividade inteligente</span>
             </div>
-            <h1 className="hero-title">
+            <h1
+              className="hero-title font-display animate-slide-up"
+              style={{ animationDelay: "0.2s" }}
+            >
               Domine seu tempo.
               <br />
               <span className="hero-title-accent">
                 Conquiste seus objetivos.
               </span>
             </h1>
-            <p className="hero-subtitle">
+            <p
+              className="hero-subtitle animate-slide-up"
+              style={{ animationDelay: "0.3s" }}
+            >
               Chronos combina a técnica Pomodoro com gestão inteligente de
               tarefas para você alcançar o máximo de foco e produtividade.
             </p>
-            <div className="hero-actions">
+            <div
+              className="hero-actions animate-slide-up"
+              style={{ animationDelay: "0.4s" }}
+            >
               <Link to="/login">
-                <Button size="lg" className="hero-cta-button">
+                <Button
+                  size="lg"
+                  className="hero-cta-button rounded-xl font-medium"
+                >
                   Começar Agora
                   <ArrowRight size={20} className="ml-2" />
                 </Button>
               </Link>
               <Link to="/app">
-                <Button variant="secondary" size="lg">
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="rounded-xl glass-panel font-medium transition-all hover:bg-surface-input"
+                >
                   Ver Demo
                 </Button>
               </Link>
             </div>
           </div>
 
-          <div className="hero-visual">
+          <div className="hero-visual animate-float">
             <div className="hero-timer-card">
               <div className="hero-timer-ring">
                 <svg viewBox="0 0 120 120" className="hero-timer-svg">
@@ -102,8 +123,8 @@ export const LandingPage = () => {
       {/* Features */}
       <section className="features-section">
         <div className="landing-container">
-          <div className="section-header-landing">
-            <h2 className="section-title-landing">
+          <div className="section-header-landing animate-slide-up">
+            <h2 className="section-title-landing font-display">
               Tudo que você precisa para ser produtivo
             </h2>
             <p className="section-description">
@@ -112,33 +133,42 @@ export const LandingPage = () => {
           </div>
 
           <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon">
+            <div
+              className="feature-card glass-panel animate-slide-up"
+              style={{ animationDelay: "0.1s" }}
+            >
+              <div className="feature-icon shadow-sm">
                 <Timer size={24} />
               </div>
-              <h3 className="feature-title">Timer Pomodoro</h3>
+              <h3 className="feature-title font-display">Timer Pomodoro</h3>
               <p className="feature-description">
                 Timer configurável com modos Foco, Pausa Curta e Pausa Longa.
                 Progresso visual circular para acompanhar cada sessão.
               </p>
             </div>
 
-            <div className="feature-card">
-              <div className="feature-icon">
+            <div
+              className="feature-card glass-panel animate-slide-up"
+              style={{ animationDelay: "0.2s" }}
+            >
+              <div className="feature-icon shadow-sm">
                 <ListChecks size={24} />
               </div>
-              <h3 className="feature-title">Gestão de Tarefas</h3>
+              <h3 className="feature-title font-display">Gestão de Tarefas</h3>
               <p className="feature-description">
                 Organize suas tarefas, defina metas de pomodoros por tarefa e
                 acompanhe o que foi concluído ao longo do dia.
               </p>
             </div>
 
-            <div className="feature-card">
-              <div className="feature-icon">
+            <div
+              className="feature-card glass-panel animate-slide-up"
+              style={{ animationDelay: "0.3s" }}
+            >
+              <div className="feature-icon shadow-sm">
                 <BarChart3 size={24} />
               </div>
-              <h3 className="feature-title">Progresso Diário</h3>
+              <h3 className="feature-title font-display">Progresso Diário</h3>
               <p className="feature-description">
                 Visualize seu progresso diário com métricas claras. Saiba
                 exatamente quanto você produziu e onde pode melhorar.
@@ -151,18 +181,25 @@ export const LandingPage = () => {
       {/* How it Works */}
       <section className="how-section">
         <div className="landing-container">
-          <div className="section-header-landing">
-            <h2 className="section-title-landing">Como funciona</h2>
+          <div className="section-header-landing animate-slide-up">
+            <h2 className="section-title-landing font-display">
+              Como funciona
+            </h2>
             <p className="section-description">
-              Três passos simples para transformar sua produtividade.
+              Três passos simples para transformar sua rotina.
             </p>
           </div>
 
           <div className="steps-grid">
-            <div className="step-card">
-              <div className="step-number">1</div>
+            <div
+              className="step-card glass-panel animate-slide-up"
+              style={{ animationDelay: "0.1s" }}
+            >
+              <div className="step-number font-display">1</div>
               <div className="step-content">
-                <h3 className="step-title">Adicione suas tarefas</h3>
+                <h3 className="step-title font-display">
+                  Adicione suas tarefas
+                </h3>
                 <p className="step-description">
                   Liste o que precisa fazer e defina quantos pomodoros cada
                   tarefa vai precisar.
@@ -170,14 +207,20 @@ export const LandingPage = () => {
               </div>
             </div>
 
-            <div className="step-divider">
+            <div
+              className="step-divider animate-slide-up"
+              style={{ animationDelay: "0.2s" }}
+            >
               <ChevronRight size={24} className="text-text-muted" />
             </div>
 
-            <div className="step-card">
-              <div className="step-number">2</div>
+            <div
+              className="step-card glass-panel animate-slide-up"
+              style={{ animationDelay: "0.3s" }}
+            >
+              <div className="step-number font-display">2</div>
               <div className="step-content">
-                <h3 className="step-title">Inicie o timer</h3>
+                <h3 className="step-title font-display">Inicie o timer</h3>
                 <p className="step-description">
                   Foque por 25 minutos, faça uma pausa curta e repita. O Chronos
                   cuida do ciclo para você.
@@ -185,14 +228,22 @@ export const LandingPage = () => {
               </div>
             </div>
 
-            <div className="step-divider">
+            <div
+              className="step-divider animate-slide-up"
+              style={{ animationDelay: "0.4s" }}
+            >
               <ChevronRight size={24} className="text-text-muted" />
             </div>
 
-            <div className="step-card">
-              <div className="step-number">3</div>
+            <div
+              className="step-card glass-panel animate-slide-up"
+              style={{ animationDelay: "0.5s" }}
+            >
+              <div className="step-number font-display">3</div>
               <div className="step-content">
-                <h3 className="step-title">Acompanhe seu progresso</h3>
+                <h3 className="step-title font-display">
+                  Acompanhe seu progresso
+                </h3>
                 <p className="step-description">
                   Veja suas métricas diárias e sinta a evolução constante da sua
                   produtividade.
@@ -206,14 +257,16 @@ export const LandingPage = () => {
       {/* CTA */}
       <section className="cta-section">
         <div className="landing-container">
-          <div className="cta-card">
-            <h2 className="cta-title">Pronto para ser mais produtivo?</h2>
+          <div className="cta-card shadow-xl animate-slide-up">
+            <h2 className="cta-title font-display">
+              Pronto para ser mais produtivo?
+            </h2>
             <p className="cta-description">
               Junte-se a milhares de pessoas que já transformaram sua rotina com
               o Chronos.
             </p>
             <Link to="/login">
-              <Button size="lg" className="cta-button">
+              <Button size="lg" className="cta-button rounded-xl font-medium">
                 Começar Gratuitamente
                 <ArrowRight size={20} className="ml-2" />
               </Button>

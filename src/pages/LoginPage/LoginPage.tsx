@@ -32,19 +32,28 @@ export const LoginPage = () => {
       <div className="login-wrapper">
         <div className="login-card">
           {/* Logo */}
-          <div className="login-header">
+          <div
+            className="login-header animate-slide-up"
+            style={{ animationDelay: "0.1s" }}
+          >
             <Link to="/" className="login-logo">
-              <div className="login-logo-icon">
+              <div className="login-logo-icon shadow-md">
                 <Clock size={24} />
               </div>
-              <span className="login-logo-text">Chronos</span>
+              <span className="login-logo-text font-display tracking-tight">
+                Chronos
+              </span>
             </Link>
-            <h1 className="login-title">Bem-vindo de volta</h1>
+            <h1 className="login-title font-display">Bem-vindo de volta</h1>
             <p className="login-subtitle">Entre na sua conta para continuar</p>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="login-form">
+          <form
+            onSubmit={handleSubmit}
+            className="login-form animate-slide-up"
+            style={{ animationDelay: "0.2s" }}
+          >
             <div className="form-group">
               <label htmlFor="email" className="form-label">
                 E-mail
@@ -88,18 +97,27 @@ export const LoginPage = () => {
               </div>
             </div>
 
-            <Button type="submit" className="login-submit-button w-full">
+            <Button
+              type="submit"
+              className="login-submit-button w-full font-medium rounded-xl"
+            >
               Entrar
             </Button>
           </form>
 
           {/* Divider */}
-          <div className="login-divider">
+          <div
+            className="login-divider animate-slide-up"
+            style={{ animationDelay: "0.3s" }}
+          >
             <span>ou continue com</span>
           </div>
 
           {/* Social Login */}
-          <div className="social-buttons">
+          <div
+            className="social-buttons animate-slide-up"
+            style={{ animationDelay: "0.4s" }}
+          >
             <Button variant="secondary" className="social-button">
               <svg
                 width="18"
@@ -135,9 +153,12 @@ export const LoginPage = () => {
           </div>
 
           {/* Register Link */}
-          <p className="login-register">
+          <p
+            className="login-register animate-slide-up"
+            style={{ animationDelay: "0.5s" }}
+          >
             Não tem uma conta?{" "}
-            <a href="#" className="form-link-accent">
+            <a href="#" className="form-link-accent font-medium">
               Cadastre-se
             </a>
           </p>

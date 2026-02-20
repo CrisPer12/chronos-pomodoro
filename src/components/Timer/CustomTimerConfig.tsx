@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { usePomodoroStore } from '@/store/usePomodoroStore';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { useState } from "react";
+import { usePomodoroStore } from "@/store/usePomodoroStore";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const DEFAULT_CONFIG = {
   pomodoro: 25,
@@ -23,11 +23,11 @@ export const CustomTimerConfig = () => {
   };
 
   return (
-    <div className="card">
-      <h3 className="text-lg font-semibold text-text-primary mb-4">
+    <div className="glass-panel p-8 rounded-2xl">
+      <h3 className="text-lg font-semibold font-display tracking-tight text-text-primary mb-6">
         Timer Personalizado (Minutos)
       </h3>
-      
+
       <div className="grid grid-cols-3 gap-4 mb-6">
         <div>
           <label className="block text-sm font-medium text-text-secondary mb-2">
@@ -39,7 +39,10 @@ export const CustomTimerConfig = () => {
             max="60"
             value={localConfig.pomodoro}
             onChange={(e) =>
-              setLocalConfig({ ...localConfig, pomodoro: Number(e.target.value) })
+              setLocalConfig({
+                ...localConfig,
+                pomodoro: Number(e.target.value),
+              })
             }
             className="text-center"
           />
@@ -55,7 +58,10 @@ export const CustomTimerConfig = () => {
             max="30"
             value={localConfig.shortBreak}
             onChange={(e) =>
-              setLocalConfig({ ...localConfig, shortBreak: Number(e.target.value) })
+              setLocalConfig({
+                ...localConfig,
+                shortBreak: Number(e.target.value),
+              })
             }
             className="text-center"
           />
@@ -71,7 +77,10 @@ export const CustomTimerConfig = () => {
             max="60"
             value={localConfig.longBreak}
             onChange={(e) =>
-              setLocalConfig({ ...localConfig, longBreak: Number(e.target.value) })
+              setLocalConfig({
+                ...localConfig,
+                longBreak: Number(e.target.value),
+              })
             }
             className="text-center"
           />

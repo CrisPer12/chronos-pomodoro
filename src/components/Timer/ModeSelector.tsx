@@ -1,11 +1,11 @@
-import { usePomodoroStore } from '@/store/usePomodoroStore';
-import { TimerMode } from '@/types';
-import { cn } from '@/lib/utils';
+import { usePomodoroStore } from "@/store/usePomodoroStore";
+import type { TimerMode } from "@/types";
+import { cn } from "@/lib/utils";
 
 const MODES: { value: TimerMode; label: string }[] = [
-  { value: 'pomodoro', label: 'Pomodoro' },
-  { value: 'shortBreak', label: 'Pausa Curta' },
-  { value: 'longBreak', label: 'Pausa Longa' },
+  { value: "pomodoro", label: "Pomodoro" },
+  { value: "shortBreak", label: "Pausa Curta" },
+  { value: "longBreak", label: "Pausa Longa" },
 ];
 
 export const ModeSelector = () => {
@@ -18,10 +18,10 @@ export const ModeSelector = () => {
           key={mode.value}
           onClick={() => setMode(mode.value)}
           className={cn(
-            "px-5 py-3 rounded-md font-medium text-base transition-all duration-base",
+            "px-6 py-2.5 rounded-full font-medium text-sm transition-all duration-base",
             timer.mode === mode.value
-              ? "bg-action-primary text-text-on-primary"
-              : "text-text-secondary hover:bg-surface-input"
+              ? "bg-action-primary text-text-on-primary shadow-md"
+              : "text-text-secondary hover:bg-surface-input",
           )}
         >
           {mode.label}
